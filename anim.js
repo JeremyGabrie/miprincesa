@@ -4,58 +4,52 @@ var lyrics = document.querySelector("#lyrics");
 
 // Array de objetos que contiene cada línea y su tiempo de aparición en segundos
 var lyricsData = [
-  { text: "At the time", time: 15 },
-  { text: "The whisper of birds", time: 18 },
-  { text: "Lonely before the sun cried", time: 27 },
-  { text: "Fell from the sky", time: 32 },
-  { text: "Like water drops", time: 33 },
-  { text: "Where I'm now? I don't know why", time: 41 },
-  { text: "Nice butterflies in my hands", time: 47 },
-  { text: "Too much light for twilight", time: 54 },
-  { text: "In the mood for the flowers love", time: 59 },
-  { text: "That vision", time: 67 },
-  { text: "Really strong, blew my mind", time: 72 },
-  { text: "Silence Let me see what it was", time: 78 },
-  { text: "I only want to live in clouds", time: 83 },
-  { text: "Where I'm now? I don't know why", time: 91 },
-  { text: "Nice butterflies in my hands", time: 97 },
-  { text: "Too much light for twilight", time: 104 },
-  { text: "In the mood for the flowers love", time: 108 },
-  { text: "At the time", time: 144 },
-  { text: "The whisper of birds", time: 148 },
-  { text: "Lonely before the sun cried", time: 153 },
-  { text: "Fell from the sky", time: 158 },
-  { text: "Like water drops", time: 164 },
-  { text: "Where I'm now? I don't know why", time: 169 },
-  { text: "Nice butterflies in my hands", time: 176 },
-  { text: "Too much light for twilight", time: 183 },
-  { text: "In the mood for the flowers", time: 188 },
-  { text: "Love.", time: 140 },
+  { text: "Te regalo mis ojos si un día no puedes ver más allá del sol", time: 22 }, //
+  { text: "Te regalo mi tiempo y sé que de todas no hay mejor inversión", time: 27 }, //
+  { text: "Tú llegaste a mi vida y sacaste dentro 'e mí mi mejor versión", time: 32 }, //
+  { text: "No tengo miedo de decir al mundo que te quiero", time: 36.30 }, //
+  { text: "Todo lo que yo vi romperse, ella con un soplo vuelve a arreglar", time: 41.70 }, //
+  { text: "Tú llegaste a mi vida y yo que ya no brillaba he vuelto a brillar", time: 47 }, //
+  { text: "Solo cuando se acabe el mundo es que nuestra historia tendrá un final", time: 52 }, //
+  { text: "No tengo miedo de decir al mundo que te quiero", time: 57 }, //
+  { text: "Mi niña, te adoro, se pasa el tiempo cuando me mira'", time: 62.10 }, 
+  { text: "Prométeme que nunca te irás de mi vida", time: 70 },
+  { text: "Si me pide' la' estrella' te vuelco el cielo", time: 75 },
+  { text: "Ya no tengo miedo de que sea' mi niña", time: 79 },
+  { text: "Te adoro, se pasa el tiempo cuando me mira'", time: 85 },
+  { text: "Prométeme que nunca te irá' de mi vida", time: 90},
+  { text: "Si me pide' la' estrella' te vuelco el cielo", time: 95},
+  { text: "Ya no tengo miedo", time:  99},
+  { text: "Como tú no hay dos, Llegaste a mi vida y cambió mi suerte", time:  102.50},
+  { text: "Me enseñaste a mirar donde en verdad tengo que mirar", time:  107},
+  { text: "Aprendí a querer, a no juzgar tanto a la gente", time:  112},
+  { text: "De todos mis errores saqué algo bueno al final", time:  117},
+  { text: "Tú mi bandida, yo tu bandido, Donde vaya', ma, yo te sigo", time:  123},
+  { text: "Nadie te mira como te miro, Ni te cuida como te cuido", time:  127},
+  { text: "Tú mi bandida, yo tu bandido.Donde vaya', ma, yo te sigo", time:  133},
+  { text: "Nadie te mira como te miro, Ni te cuida como te cuido", time:  138.50},
 ];
 
 // Animar las letras
 function updateLyrics() {
   var time = Math.floor(audio.currentTime);
   var currentLine = lyricsData.find(
-    (line) => time >= line.time && time < line.time + 6
+    (line) => time >= line.time && time < line.time + 4
   );
-
+  console.log("0. tiempo",time);
+  console.log("0. texto",currentLine);
   if (currentLine) {
-    // Calcula la opacidad basada en el tiempo en la línea actual
-    var fadeInDuration = 0.1; // Duración del efecto de aparición en segundos
-    var opacity = Math.min(1, (time - currentLine.time) / fadeInDuration);
-
-    // Aplica el efecto de aparición
-    lyrics.style.opacity = opacity;
+    lyrics.style.opacity = 1;
     lyrics.innerHTML = currentLine.text;
   } else {
+    console.log("2. vacio");
     // Restablece la opacidad y el contenido si no hay una línea actual
     lyrics.style.opacity = 0;
     lyrics.innerHTML = "";
   }
 }
 
-setInterval(updateLyrics, 1000);
+setInterval(updateLyrics, 640);
 
 //funcion titulo
 // Función para ocultar el título después de 216 segundos
